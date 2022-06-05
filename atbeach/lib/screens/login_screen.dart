@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             SizedBox(
-                              height: 200,
+                              height: 100,
                               child: Image.asset(
                                 "assets/logo.png",
                                 fit: BoxFit.contain,
@@ -134,8 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         'SignUp',
                                         style: TextStyle(
                                             color: isHover
-                                                ? Colors.orangeAccent
-                                                : Colors.grey,
+                                                ? Colors.grey
+                                                : Colors.orangeAccent,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 15),
                                       ),
