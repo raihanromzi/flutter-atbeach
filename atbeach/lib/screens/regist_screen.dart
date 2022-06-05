@@ -25,7 +25,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       autofocus: false,
       controller: usernameEditingController,
       keyboardType: TextInputType.name,
-      // validator: ,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ('Username is required');
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please write your username atleast 6 characters long");
+        }
+      },
       onSaved: (value) {
         usernameEditingController.text = value!;
       },
@@ -44,7 +52,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.emailAddress,
-      // validator: ,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ('Please enter your email');
+        }
+        // reg expression for email validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ('Please enter a valid email');
+        }
+        return null;
+      },
       onSaved: (value) {
         emailEditingController.text = value!;
       },
@@ -63,7 +80,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       autofocus: false,
       controller: passwordEditingController,
       obscureText: true,
-      // validator: ,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ('Password is required');
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please write your password atleast 6 characters long");
+        }
+      },
       onSaved: (value) {
         passwordEditingController.text = value!;
       },
@@ -82,7 +107,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       autofocus: false,
       controller: confirmPasswordEditingController,
       obscureText: true,
-      // validator: ,
+      validator: (value) {
+        if (confirmPasswordEditingController.text.length > 6 &&
+            confirmPasswordEditingController != value) {
+          return "Password don't";
+        }
+      },
       onSaved: (value) {
         confirmPasswordEditingController.text = value!;
       },
@@ -177,5 +207,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         )),
                   )))),
     );
+  }
+
+  void signUp(String email, String password) async {
+    if (_formKey.currentState!.validate()) ;
   }
 }
