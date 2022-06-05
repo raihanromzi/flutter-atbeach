@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-
-import 'app/routes/app_pages.dart';
+import 'package:atbeach/screens/login_screen.dart';
 
 void main() {
-  runApp(
-    GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-    ),
-  );
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+      ),
+      home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }
