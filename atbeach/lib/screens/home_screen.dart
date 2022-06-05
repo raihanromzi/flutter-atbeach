@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,11 +10,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        "This is homepage",
-        style: TextStyle(fontSize: 50),
-      ),
-    );
+    return Scaffold(
+        backgroundColor: Colors.indigo[900],
+        body: Center(
+          child: Container(
+            child: SizedBox(
+              height: 100,
+              child: Image.asset(
+                "assets/logo-white.png",
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ));
   }
 }
