@@ -1,3 +1,4 @@
+import 'package:atbeach/screens/regist_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -73,6 +74,8 @@ class _LoginScreenState extends State<LoginScreen> {
               )),
         ));
 
+    bool isHover = false;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             SizedBox(
-                              height: 200,
+                              height: 100,
                               child: Image.asset(
                                 "assets/logo.png",
                                 fit: BoxFit.contain,
@@ -114,15 +117,29 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: <Widget>[
                                 Text("Don't have an account? "),
                                 GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    'SignUp',
-                                    style: TextStyle(
-                                        color: Colors.orangeAccent,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15),
-                                  ),
-                                )
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegistrationScreen()));
+                                    },
+                                    child: InkWell(
+                                      onHover: (value) {
+                                        setState(() {
+                                          isHover = value;
+                                        });
+                                      },
+                                      child: Text(
+                                        'SignUp',
+                                        style: TextStyle(
+                                            color: isHover
+                                                ? Colors.grey
+                                                : Colors.orangeAccent,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15),
+                                      ),
+                                    ))
                               ],
                             )
                           ],
