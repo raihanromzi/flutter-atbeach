@@ -1,5 +1,9 @@
+import 'package:atbeach/model/user_model.dart';
 import 'package:atbeach/screens/home_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -9,6 +13,8 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _auth = FirebaseAuth.instance;
+
   // form key
   final _formKey = GlobalKey<FormState>();
 
@@ -108,9 +114,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: confirmPasswordEditingController,
       obscureText: true,
       validator: (value) {
-        if (confirmPasswordEditingController.text.length > 6 &&
-            confirmPasswordEditingController != value) {
-          return "Password don't";
+        if (value == null) {
+          return 'Please confirm your password';
+        }
+        if (confirmPasswordEditingController.text !=
+            passwordEditingController.text) {
+          return "Password don't match";
         }
       },
       onSaved: (value) {
@@ -134,8 +143,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            signUp(emailEditingController.text, passwordEditingController.text);
           },
           child: Text('Sign Up',
               textAlign: TextAlign.center,
@@ -210,6 +218,47 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void signUp(String email, String password) async {
-    if (_formKey.currentState!.validate()) ;
+    String confimPass = confirmPasswordEditingController.text.toString();
+    if (password != confimPass) {
+      Fluttertoast.showToast(msg: 'Password did not match');
+      return;
+    }
+    if (_formKey.currentState!.validate()) {}
+    await _auth
+        .createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then((value) => {postDetailsToFirestore()})
+        .catchError((e) {
+      Fluttertoast.showToast(msg: e!.message);
+    });
+  }
+
+  postDetailsToFirestore() async {
+    // calling firestore
+    // calling user model
+    // searching the values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+    UserModel userModel = UserModel();
+
+    // writing all the values
+    userModel.email = user!.email;
+    userModel.uid = user.uid;
+    userModel.username = usernameEditingController.text;
+
+    await firebaseFirestore
+        .collection('users')
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: 'Account created successfully');
+
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+        (route) => false);
   }
 }
