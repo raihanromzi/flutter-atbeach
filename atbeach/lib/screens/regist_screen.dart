@@ -1,5 +1,6 @@
 import 'package:atbeach/model/user_model.dart';
 import 'package:atbeach/screens/home_screen.dart';
+import 'package:atbeach/screens/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -258,7 +259,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
         (route) => false);
   }
 }
