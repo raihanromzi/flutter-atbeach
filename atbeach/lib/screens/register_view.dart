@@ -27,6 +27,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: AppColorTheme.primaryDark,
         body: SingleChildScrollView(

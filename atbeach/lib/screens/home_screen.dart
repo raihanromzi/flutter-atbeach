@@ -10,8 +10,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(child: Text('Hello Madafaka!!')));
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            backgroundColor: Colors.white,
+            body: Center(child: Text('Hello Madafaka!!'))));
   }
 }
