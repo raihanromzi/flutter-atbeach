@@ -102,7 +102,6 @@ class _LoginViewState extends State<LoginView> {
                         },
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
-                          suffixIcon: const Icon(Icons.remove_red_eye),
                           filled: true,
                           fillColor: const Color(0xFFF7F8F9),
                           hintText: 'Enter you password',

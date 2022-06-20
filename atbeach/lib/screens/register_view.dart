@@ -135,7 +135,6 @@ class _RegisterViewState extends State<RegisterView> {
                               },
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.remove_red_eye),
                                 filled: true,
                                 fillColor: const Color(0xFFF7F8F9),
                                 hintText: 'Enter you password',
@@ -162,7 +161,6 @@ class _RegisterViewState extends State<RegisterView> {
                               },
                               textInputAction: TextInputAction.done,
                               decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.remove_red_eye),
                                 filled: true,
                                 fillColor: const Color(0xFFF7F8F9),
                                 hintText: 'Confirm your password',
