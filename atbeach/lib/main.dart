@@ -1,3 +1,5 @@
+import 'package:atbeach/screens/home_screen.dart';
+import 'package:atbeach/screens/login_view.dart';
 import 'package:atbeach/screens/onboarding_view.dart';
 import 'package:atbeach/widget/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,17 +20,21 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 4)),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const SplashScreen();
-          } else {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: OnBoardingView(),
-            );
-          }
-        });
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginView(),
+    );
+    // return FutureBuilder(
+    //     future: Future.delayed(const Duration(seconds: 4)),
+    //     builder: (context, snapshot) {
+    //       if (snapshot.connectionState == ConnectionState.waiting) {
+    //         return const SplashScreen();
+    //       } else {
+    //         return MaterialApp(
+    //           debugShowCheckedModeBanner: false,
+    //           home: OnBoardingView(),
+    //         );
+    //       }
+    //     });
   }
 }

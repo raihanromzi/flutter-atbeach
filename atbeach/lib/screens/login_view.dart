@@ -1,9 +1,23 @@
+import 'package:atbeach/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/app_color_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  // firebase
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,31 +51,69 @@ class LoginView extends StatelessWidget {
                       color: Colors.white)),
               const SizedBox(height: 40),
               Form(
+                key: _formKey,
                 child: Column(
                   children: [
                     TextFormField(
+                        autofocus: false,
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return ('Please enter your email');
+                          }
+                          // reg expression for email validation
+                          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                              .hasMatch(value)) {
+                            return ('Please enter a valid email');
+                          }
+                        },
+                        onSaved: (value) {
+                          emailController.text = value!;
+                        },
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color(0xFFF7F8F9),
-                      hintText: 'Enter you email',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    )),
+                          filled: true,
+                          fillColor: const Color(0xFFF7F8F9),
+                          hintText: 'Enter you email',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        )),
                     const SizedBox(height: 20),
                     TextFormField(
+                        autofocus: false,
+                        controller: passwordController,
+                        obscureText: true,
+                        validator: (value) {
+                          RegExp regex = RegExp(r'^.{6,}$');
+                          if (value!.isEmpty) {
+                            return ('Password is required');
+                          }
+                          if (!regex.hasMatch(value)) {
+                            return ("Please write your password atleast 6 characters long");
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          passwordController.text = value!;
+                        },
+                        textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
-                      suffixIcon: const Icon(Icons.remove_red_eye),
-                      filled: true,
-                      fillColor: const Color(0xFFF7F8F9),
-                      hintText: 'Enter you password',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    )),
+                          suffixIcon: const Icon(Icons.remove_red_eye),
+                          filled: true,
+                          fillColor: const Color(0xFFF7F8F9),
+                          hintText: 'Enter you password',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        )),
                     const SizedBox(height: 60),
                     SizedBox(
                       width: double.infinity,
                       child: MaterialButton(
-                          onPressed: () => {},
+                          onPressed: () {
+                            signIn(
+                                emailController.text, passwordController.text);
+                          },
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 18),
                           shape: RoundedRectangleBorder(
@@ -111,5 +163,20 @@ class LoginView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: 'Login successful'),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomeScreen()))
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }
