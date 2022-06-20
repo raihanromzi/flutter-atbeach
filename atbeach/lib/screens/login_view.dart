@@ -1,4 +1,5 @@
 import 'package:atbeach/screens/home_screen.dart';
+import 'package:atbeach/screens/register_view.dart';
 import 'package:flutter/material.dart';
 import '../widget/app_color_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back_ios_new,
                       color: Colors.white, size: 24),
-                  onPressed: () => {},
+                  onPressed: () => {Navigator.pop(context)},
                 ),
               ),
               const SizedBox(height: 30),
@@ -67,6 +68,7 @@ class _LoginViewState extends State<LoginView> {
                               .hasMatch(value)) {
                             return ('Please enter a valid email');
                           }
+                          return null;
                         },
                         onSaved: (value) {
                           emailController.text = value!;
@@ -145,7 +147,12 @@ class _LoginViewState extends State<LoginView> {
                                 fontSize: 18,
                                 color: AppColorTheme.line)),
                         TextButton(
-                          onPressed: () => {},
+                          onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterView()))
+                          },
                           child: const Text('Sign up',
                               style: TextStyle(
                                   fontFamily: 'Poppins',

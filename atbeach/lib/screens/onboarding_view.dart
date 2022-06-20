@@ -1,4 +1,6 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:atbeach/screens/login_view.dart';
+import 'package:atbeach/screens/register_view.dart';
 import 'package:flutter/material.dart';
 import '../../../widget/app_color_theme.dart';
 
@@ -63,7 +65,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           SizedBox(
                             width: double.infinity,
                             child: MaterialButton(
-                                onPressed: () => {},
+                                onPressed: () => {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegisterView()))
+                                    },
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 18),
                                 shape: RoundedRectangleBorder(
@@ -88,7 +96,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                             width: double.infinity,
                             child: MaterialButton(
                                 minWidth: double.infinity,
-                                onPressed: () => {},
+                                onPressed: () => {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoginView()))
+                                    },
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 18),
                                 shape: RoundedRectangleBorder(

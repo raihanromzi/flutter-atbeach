@@ -1,5 +1,5 @@
 import 'package:atbeach/model/user_model.dart';
-import 'package:atbeach/screens/login_screen.dart';
+import 'package:atbeach/screens/backup/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +19,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final usernameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
+  final usernameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: usernameEditingController,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ('Username is required');
         }
         if (!regex.hasMatch(value)) {
           return ("Please write your username atleast 6 characters long");
         }
+        return null;
       },
       onSaved: (value) {
         usernameEditingController.text = value!;
@@ -87,13 +88,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: passwordEditingController,
       obscureText: true,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ('Password is required');
         }
         if (!regex.hasMatch(value)) {
           return ("Please write your password atleast 6 characters long");
         }
+        return null;
       },
       onSaved: (value) {
         passwordEditingController.text = value!;
@@ -121,6 +123,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             passwordEditingController.text) {
           return "Password don't match";
         }
+        return null;
       },
       onSaved: (value) {
         confirmPasswordEditingController.text = value!;
