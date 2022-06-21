@@ -1,3 +1,4 @@
+import 'package:atbeach/screens/home_screen.dart';
 import 'package:atbeach/screens/onboarding_view.dart';
 import 'package:atbeach/widget/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // return MaterialApp(
     //   debugShowCheckedModeBanner: false,
-    //   home: RegisterView(),
+    //   home: HomeScreen(),
     // );
     return FutureBuilder(
         future: Future.delayed(const Duration(seconds: 4)),

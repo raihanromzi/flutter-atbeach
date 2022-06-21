@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>501238461839-rof0v9g9gp7j1tiuiq21n5jncs40nr3t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.501238461839-rof0v9g9gp7j1tiuiq21n5jncs40nr3t</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>501238461839-epes4m5r1r14fugshp7jk3kevna022iq.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDzyUfzi6kf4HJ2GoSJw9HjCIzcXaQo9x0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>501238461839</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kelompok10.atbeach</string>
+	<key>PROJECT_ID</key>
+	<string>atbeachauth-2022</string>
+	<key>STORAGE_BUCKET</key>
+	<string>atbeachauth-2022.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:501238461839:ios:0bc1263b05ff65f50287fa</string>
+</dict>
+</plist>

@@ -9,13 +9,17 @@ environment:
 dependencies:
   animate_do: ^2.1.0
   cloud_firestore: ^3.1.17
+  collection: ^1.16.0
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.19
   firebase_core: ^1.17.1
   flutter:
     sdk: flutter
+  flutter_staggered_grid_view: ^0.4.0
   fluttertoast: ^8.0.9
-  get: 4.6.5
+  get: ^4.6.5
+  http: ^0.13.4
+  salomon_bottom_bar: ^3.3.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
