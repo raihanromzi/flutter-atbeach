@@ -3,6 +3,8 @@ import 'package:atbeach/controller/unsplash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widget/app_color_theme.dart';
 import '../widget/circular_indicator_tabbar.dart';
@@ -15,7 +17,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String username = '';
+  String uid = '';
   UnsplashController unsplashController = Get.put(UnsplashController());
+
+  getInfo() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(firebaseUser.uid)
+          .get()
+          .then((ds) {
+        username = ds.data()?['username'];
+        uid = ds.data()?['uid'];
+      });
+      print(username);
+      print(uid);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +53,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       FadeInDown(
                         delay: Duration(milliseconds: 800),
-                        child: Text(
-                          'atBeach',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                            color: AppColorTheme.line,
-                          ),
+                        child: FutureBuilder(
+                          future: getInfo(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState !=
+                                ConnectionState.done) {
+                              return Text('Loading data... please wait');
+                            }
+                            return Text(
+                              'Welcome $username',
+                              style: TextStyle(color: Colors.white),
+                            );
+                          },
                         ),
                       ),
                       SizedBox(height: 20),
@@ -82,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // Home
                       Center(
                         child: Text(
-                          'Home',
+                          'Welcome $username',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -111,10 +137,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             StaggeredTile.count(2, index.isEven ? 4 : 2),
                       ),
                       Center(
-                        child: Text(
-                          'Home',
-                          style: TextStyle(color: Colors.white),
-                        ),
+                        child: Text('History'),
+                        // child: FutureBuilder(
+                        //   future: getInfo(),
+                        //   builder: (context, snapshot) {
+                        //     if (snapshot.connectionState !=
+                        //         ConnectionState.done) {
+                        //       return Text('Loading data... please wait');
+                        //     }
+                        //     return Text(
+                        //       'Welcome $username',
+                        //       style: TextStyle(color: Colors.white),
+                        //     );
+                        //   },
+                        // ),
                       ),
                     ],
                   ))

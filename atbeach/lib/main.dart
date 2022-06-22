@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: OnBoardingView(),
     );
     // return FutureBuilder(
     //     future: Future.delayed(const Duration(seconds: 4)),
