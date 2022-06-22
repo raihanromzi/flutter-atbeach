@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisSpacing: 1,
                         itemCount: unsplashController.data.length,
                         itemBuilder: (context, index) {
-                          var currentPhotos = unsplashController.data;
+                          var currentPhotos = unsplashController.data[index];
                           return FadeInDown(
                             delay: Duration(milliseconds: index * 50),
                             duration:
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Container(
                               color: Colors.black,
                               child: Image.network(
-                                currentPhotos[index]['urls']['small'],
+                                currentPhotos['urls']['small'],
                                 fit: BoxFit.cover,
                               ),
                             ),
