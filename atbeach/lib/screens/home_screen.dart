@@ -34,12 +34,23 @@ class _HomeScreenState extends State<HomeScreen> {
   //   print(firebaseUser?.uid);
   //   print(firebaseUser?.displayName);
   // }
-  static const List<Widget> pages = [
+  PageController pageController = PageController();
+
+  List<Widget> pages = [
     ExplorePage(),
     GalleryPage(),
     HistoryPage(),
   ];
   int _currentIndex = 0;
+  void onPageChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void onItemTapped(int selectedIndex) {
+    pageController.jumpToPage(selectedIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColorTheme.primaryDark,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColorTheme.primaryDark,
-        currentIndex: 1,
-        onTap: (value) {
-          setState(() => _currentIndex = value);
-        },
+        currentIndex: _currentIndex,
+        onTap: onItemTapped,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withOpacity(0.5),
         items: [
@@ -65,7 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
         ],
       ),
-      body: pages[_currentIndex],
+      body: PageView(
+        controller: pageController,
+        children: pages,
+        onPageChanged: onPageChanged,
+      ),
     );
   }
 }
