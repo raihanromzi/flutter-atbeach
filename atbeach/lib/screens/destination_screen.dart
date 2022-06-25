@@ -233,7 +233,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(0),
                 ),
                 color: AppColorTheme.primaryDark,
                 child: Row(
