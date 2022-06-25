@@ -200,30 +200,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                     activity.startTimes[1],
                                   ),
                                 ),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: MaterialButton(
-                                      onPressed: () {},
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 30, vertical: 18),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      color: AppColorTheme.primaryDark,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          Text(
-                                            'Login',
-                                            style: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 16),
-                                          )
-                                        ],
-                                      )),
-                                ),
                               ],
                             )
                           ],
@@ -249,6 +225,29 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 );
               },
             ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: MaterialButton(
+                onPressed: () {},
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: AppColorTheme.primaryDark,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Login',
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
+                    )
+                  ],
+                )),
           ),
         ],
       ),
