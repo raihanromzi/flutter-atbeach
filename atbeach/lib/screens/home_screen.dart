@@ -2,6 +2,7 @@ import 'package:atbeach/screens/navbarpages/explore_page.dart';
 import 'package:atbeach/screens/navbarpages/gallery_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import '../widget/app_color_theme.dart';
 import 'navbarpages/history_page.dart';
 
@@ -56,22 +57,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColorTheme.primaryDark,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColorTheme.primaryDark,
+      bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: onItemTapped,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(0.5),
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.photo_library),
-            label: 'Gallery',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+          /// Home
+          SalomonBottomBarItem(
+              icon: Icon(Icons.explore),
+              title: Text("Explore"),
+              selectedColor: Colors.white,
+              unselectedColor: AppColorTheme.line),
+
+          /// Likes
+          SalomonBottomBarItem(
+              icon: Icon(Icons.photo_library),
+              title: Text("Gallery"),
+              selectedColor: Colors.white,
+              unselectedColor: AppColorTheme.line),
+
+          /// Search
+          SalomonBottomBarItem(
+              icon: Icon(Icons.history),
+              title: Text("History"),
+              selectedColor: Colors.white,
+              unselectedColor: AppColorTheme.line),
         ],
       ),
       body: PageView(
