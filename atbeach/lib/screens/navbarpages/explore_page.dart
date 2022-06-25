@@ -114,9 +114,10 @@ class _ExplorePageState extends State<ExplorePage> {
                   items: imageSliders,
                 ),
               ),
-              ListView(
-                children: [SizedBox(height: 20), DestinationCarousel()],
-              )
+              SizedBox(
+                height: 20,
+              ),
+              DestinationCarousel()
             ]),
           ),
         ]));
