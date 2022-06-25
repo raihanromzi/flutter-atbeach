@@ -240,11 +240,12 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
-                      'Login',
+                      'Checkout',
                       style: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
-                          fontSize: 16),
+                          fontSize: 16,
+                          color: Colors.white),
                     )
                   ],
                 )),
