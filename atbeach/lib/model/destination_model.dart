@@ -15,32 +15,32 @@ class Destination {
 List<Destination> destinations = [
   Destination(
     imageUrl: 'assets/images/venice.jpg',
-    city: 'Venice',
-    country: 'Italy',
+    city: 'Pantai Bali',
+    country: 'Indonesia',
     description: 'Visit Venice for an amazing and unforgettable adventure.',
   ),
   Destination(
     imageUrl: 'assets/images/paris.jpg',
-    city: 'Paris',
-    country: 'France',
+    city: 'Pantai Lombok',
+    country: 'Indonesia',
     description: 'Visit Paris for an amazing and unforgettable adventure.',
   ),
   Destination(
     imageUrl: 'assets/images/newdelhi.jpg',
-    city: 'New Delhi',
-    country: 'India',
+    city: 'Pantai Tanjung Harapan',
+    country: 'Indonesia',
     description: 'Visit New Delhi for an amazing and unforgettable adventure.',
   ),
   Destination(
     imageUrl: 'assets/images/saopaulo.jpg',
-    city: 'Sao Paulo',
-    country: 'Brazil',
+    city: 'Pantai Balikpapan',
+    country: 'Indonesia',
     description: 'Visit Sao Paulo for an amazing and unforgettable adventure.',
   ),
   Destination(
     imageUrl: 'assets/images/newyork.jpg',
-    city: 'New York City',
-    country: 'United States',
+    city: 'Pantai Jogja',
+    country: 'Indonesia',
     description: 'Visit New York for an amazing and unforgettable adventure.',
   ),
 ];
