@@ -16,10 +16,10 @@ class DestinationCarousel extends StatelessWidget {
               Text(
                 'Top Destinations',
                 style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                ),
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                    color: Colors.white),
               ),
             ],
           ),
