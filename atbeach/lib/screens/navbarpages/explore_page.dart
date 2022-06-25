@@ -1,5 +1,4 @@
 import 'package:atbeach/widget/app_color_theme.dart';
-import 'package:atbeach/widget/destinations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -114,7 +113,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               ),
               ListView(
-                children: [SizedBox(height: 20), DestinationCarousel()],
+                children: [SizedBox(height: 20)],
               )
             ]),
           ),
