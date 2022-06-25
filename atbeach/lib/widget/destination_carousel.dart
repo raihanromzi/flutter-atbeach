@@ -122,7 +122,7 @@ class DestinationCarousel extends StatelessWidget {
                                       ),
                                       SizedBox(width: 5.0),
                                       Text(
-                                        destination.country,
+                                        destination.price,
                                         style: TextStyle(
                                           color: Colors.white,
                                         ),

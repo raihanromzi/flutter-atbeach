@@ -1,8 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:html';
+
 import 'package:atbeach/model/destination_model.dart';
+import 'package:atbeach/screens/home_screen.dart';
 import 'package:atbeach/widget/app_color_theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:atbeach/model/history_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DestinationScreen extends StatefulWidget {
   final Destination destination;
@@ -86,7 +92,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                         ),
                         SizedBox(width: 5.0),
                         Text(
-                          widget.destination.country,
+                          widget.destination.price,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 20.0,
@@ -118,7 +124,9 @@ class _DestinationScreenState extends State<DestinationScreen> {
           SizedBox(
             width: double.infinity,
             child: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  addHistory();
+                },
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
                 shape: RoundedRectangleBorder(
@@ -142,5 +150,22 @@ class _DestinationScreenState extends State<DestinationScreen> {
         ],
       ),
     );
+  }
+
+  Future addHistory() async {
+    final checkout = FirebaseFirestore.instance.collection('history').doc();
+
+    final history = HistoryModel(
+        beachName: widget.destination.city,
+        price: widget.destination.price,
+        userID: 'MCN8x281XsbxhSfh3laY3pWVpk62');
+
+    await checkout.set(history.toJson());
+
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+        (route) => false);
+    Fluttertoast.showToast(msg: 'Checkout Success!');
   }
 }
