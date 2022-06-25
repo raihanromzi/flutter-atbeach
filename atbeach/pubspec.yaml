@@ -35,6 +35,7 @@ flutter:
   assets:
     - assets/logo/
     - assets/illustration/
+    - assets/images/
   fonts:
     - family: Poppins
       fonts:
