@@ -62,14 +62,6 @@ class DestinationCarousel extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  '${destination.activities.length} activities',
-                                  style: TextStyle(
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1.2,
-                                  ),
-                                ),
-                                Text(
                                   destination.description,
                                   style: TextStyle(
                                     color: Colors.grey,
