@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:atbeach/model/activity_model.dart';
 import 'package:atbeach/model/destination_model.dart';
+import 'package:atbeach/widget/app_color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -198,6 +199,30 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                   child: Text(
                                     activity.startTimes[1],
                                   ),
+                                ),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: MaterialButton(
+                                      onPressed: () {},
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30, vertical: 18),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      color: AppColorTheme.primaryDark,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Text(
+                                            'Login',
+                                            style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 16),
+                                          )
+                                        ],
+                                      )),
                                 ),
                               ],
                             )
