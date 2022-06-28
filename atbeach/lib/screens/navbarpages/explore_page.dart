@@ -74,52 +74,55 @@ class _ExplorePageState extends State<ExplorePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: AppColorTheme.primaryDark,
-        body: CustomScrollView(controller: _scrollController, slivers: [
-          SliverAppBar(
-            expandedHeight: 300.0,
-            elevation: 0,
-            pinned: true,
-            floating: true,
-            stretch: true,
-            backgroundColor: AppColorTheme.primaryDark,
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.pin,
-              titlePadding: EdgeInsets.only(left: 20, right: 30, bottom: 50),
-              stretchModes: [
-                StretchMode.zoomBackground,
-                // StretchMode.fadeTitle
-              ],
-              title: AnimatedOpacity(
-                  opacity: _isScrolled ? 0.0 : 1.0,
-                  duration: Duration(milliseconds: 500),
-                  child: Text('Explore Beautiful Beaches in Indonesia',
-                      style: TextStyle(
-                        color: AppColorTheme.line,
-                        fontSize: 24,
-                        fontFamily: 'Poppins',
-                      ))),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          backgroundColor: AppColorTheme.primaryDark,
+          body: CustomScrollView(controller: _scrollController, slivers: [
+            SliverAppBar(
+              expandedHeight: 300.0,
+              elevation: 0,
+              pinned: true,
+              floating: true,
+              stretch: true,
+              backgroundColor: AppColorTheme.primaryDark,
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.pin,
+                titlePadding: EdgeInsets.only(left: 20, right: 30, bottom: 50),
+                stretchModes: [
+                  StretchMode.zoomBackground,
+                  // StretchMode.fadeTitle
+                ],
+                title: AnimatedOpacity(
+                    opacity: _isScrolled ? 0.0 : 1.0,
+                    duration: Duration(milliseconds: 500),
+                    child: Text('Explore Beautiful Beaches in Indonesia',
+                        style: TextStyle(
+                          color: AppColorTheme.line,
+                          fontSize: 24,
+                          fontFamily: 'Poppins',
+                        ))),
+              ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Container(
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    autoPlay: true,
-                    aspectRatio: 2.0,
-                    enlargeCenterPage: true,
+            SliverList(
+              delegate: SliverChildListDelegate([
+                Container(
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      aspectRatio: 2.0,
+                      enlargeCenterPage: true,
+                    ),
+                    items: imageSliders,
                   ),
-                  items: imageSliders,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              DestinationCarousel()
-            ]),
-          ),
-        ]));
+                SizedBox(
+                  height: 20,
+                ),
+                DestinationCarousel()
+              ]),
+            ),
+          ])),
+    );
   }
 }

@@ -17,6 +17,7 @@ class _GalleryPageState extends State<GalleryPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: StaggeredGridView.countBuilder(
           padding: EdgeInsets.all(0),

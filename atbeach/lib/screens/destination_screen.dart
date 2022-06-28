@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:html';
 
 import 'package:atbeach/model/destination_model.dart';
 import 'package:atbeach/screens/home_screen.dart';
@@ -26,128 +25,132 @@ class DestinationScreen extends StatefulWidget {
 class _DestinationScreenState extends State<DestinationScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Container(
-                height: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0.0, 2.0),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Hero(
-                  tag: widget.destination.imageUrl,
-                  child: ClipRRect(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30.0),
-                    child: Image(
-                      image: AssetImage(widget.destination.imageUrl),
-                      fit: BoxFit.cover,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0.0, 2.0),
+                        blurRadius: 6.0,
+                      ),
+                    ],
+                  ),
+                  child: Hero(
+                    tag: widget.destination.imageUrl,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Image(
+                        image: AssetImage(widget.destination.imageUrl),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 40.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      iconSize: 30.0,
-                      color: Colors.black,
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                left: 20.0,
-                bottom: 20.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      widget.destination.city,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1.2,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 40.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        iconSize: 30.0,
+                        color: Colors.black,
+                        onPressed: () => Navigator.pop(context),
                       ),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          FontAwesomeIcons.locationArrow,
-                          size: 15.0,
-                          color: Colors.white70,
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 20.0,
+                  bottom: 20.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        widget.destination.city,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.2,
                         ),
-                        SizedBox(width: 5.0),
-                        Text(
-                          widget.destination.price,
-                          style: TextStyle(
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            FontAwesomeIcons.locationArrow,
+                            size: 15.0,
                             color: Colors.white70,
-                            fontSize: 20.0,
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          SizedBox(width: 5.0),
+                          Text(
+                            widget.destination.price,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Positioned(
-                right: 20.0,
-                bottom: 20.0,
-                child: Icon(
-                  Icons.location_on,
-                  color: Colors.white70,
-                  size: 25.0,
+                Positioned(
+                  right: 20.0,
+                  bottom: 20.0,
+                  child: Icon(
+                    Icons.location_on,
+                    color: Colors.white70,
+                    size: 25.0,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+              ],
             ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: MaterialButton(
-                onPressed: () {
-                  addHistory();
-                },
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0),
-                ),
-                color: AppColorTheme.primaryDark,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Checkout',
-                      style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white),
-                    )
-                  ],
-                )),
-          ),
-        ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: MaterialButton(
+                  onPressed: () {
+                    addHistory();
+                  },
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  color: AppColorTheme.primaryDark,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Checkout',
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white),
+                      )
+                    ],
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }

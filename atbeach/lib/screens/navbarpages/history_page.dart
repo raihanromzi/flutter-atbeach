@@ -81,26 +81,28 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColorTheme.primaryDark,
-        title: Text('History List'),
-      ),
-      body: StreamBuilder<List<HistoryModel>>(
-          stream: readHistory(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text('Something went wrong ${snapshot.error}');
-            }
-            if (snapshot.hasData) {
-              final histories = snapshot.data;
-              return ListView(
-                children: histories!.map(buildHistory).toList(),
-              );
-            }
-            return Center(child: CircularProgressIndicator());
-          }),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColorTheme.primaryDark,
+            title: Text('History List'),
+          ),
+          body: StreamBuilder<List<HistoryModel>>(
+              stream: readHistory(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong ${snapshot.error}');
+                }
+                if (snapshot.hasData) {
+                  final histories = snapshot.data;
+                  return ListView(
+                    children: histories!.map(buildHistory).toList(),
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
+              }),
+        ));
   }
 
   Widget buildHistory(HistoryModel history) => ListTile(

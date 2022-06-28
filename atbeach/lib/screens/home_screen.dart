@@ -55,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       backgroundColor: AppColorTheme.primaryDark,
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
@@ -88,6 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: pages,
         onPageChanged: onPageChanged,
       ),
-    );
+    ));
   }
 }
