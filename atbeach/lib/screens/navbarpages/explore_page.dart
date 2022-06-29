@@ -1,8 +1,11 @@
 import 'package:atbeach/screens/destination_screen.dart';
+import 'package:atbeach/screens/onboarding_view.dart';
 import 'package:atbeach/widget/app_color_theme.dart';
 import 'package:atbeach/widget/destination_carousel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -44,6 +47,8 @@ class _ExplorePageState extends State<ExplorePage> {
   late ScrollController _scrollController;
   bool _isScrolled = false;
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   var selectedRange = RangeValues(150.00, 1500.00);
 
   List<int> list = [1, 2, 3, 4, 5];
@@ -79,7 +84,17 @@ class _ExplorePageState extends State<ExplorePage> {
               actions: [
                 IconButton(
                   icon: Icon(Icons.logout),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _auth.signOut().catchError((e) {
+                      Fluttertoast.showToast(msg: e!.message);
+                    });
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OnBoardingView()),
+                        (route) => false);
+                    Fluttertoast.showToast(msg: 'Logout success!');
+                  },
                 ),
               ],
               expandedHeight: 270.0,
@@ -135,4 +150,13 @@ class _ExplorePageState extends State<ExplorePage> {
           ])),
     );
   }
+
+  // Future signOut() async {
+  //   try {
+  //     return await _auth.signOut();
+  //   } catch (e) {
+  //     Fluttertoast.showToast(msg: e.toString());
+  //     return null;
+  //   }
+  // }
 }
