@@ -28,6 +28,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: AppColorTheme.primaryDark,
         body: Column(
           children: <Widget>[
             Stack(
@@ -47,7 +48,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   child: Hero(
                     tag: widget.destination.imageUrl,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30.0),
+                        bottomRight: Radius.circular(30.0),
+                      ),
                       child: Image(
                         image: AssetImage(widget.destination.imageUrl),
                         fit: BoxFit.cover,
@@ -61,11 +65,18 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        iconSize: 30.0,
-                        color: Colors.black,
-                        onPressed: () => Navigator.pop(context),
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                                color: AppColorTheme.primaryDark, width: 4)),
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_back_ios_new,
+                              color: AppColorTheme.primaryDark, size: 24),
+                          onPressed: () => {Navigator.pop(context)},
+                        ),
                       ),
                     ],
                   ),
@@ -123,31 +134,35 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
               ),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: MaterialButton(
-                  onPressed: () {
-                    addHistory();
-                  },
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  color: AppColorTheme.primaryDark,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Checkout',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: Colors.white),
-                      )
-                    ],
-                  )),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+              child: SafeArea(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: MaterialButton(
+                      onPressed: () {
+                        addHistory();
+                      },
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      color: AppColorTheme.secondaryDark,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            'Checkout',
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16),
+                          )
+                        ],
+                      )),
+                ),
+              ),
             ),
           ],
         ),

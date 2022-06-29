@@ -2,7 +2,6 @@ import 'package:atbeach/model/destination_model.dart';
 import 'package:atbeach/screens/destination_screen.dart';
 import 'package:atbeach/widget/app_color_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DestinationCarousel extends StatelessWidget {
   @override
