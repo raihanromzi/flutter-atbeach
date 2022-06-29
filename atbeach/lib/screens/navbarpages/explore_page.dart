@@ -76,6 +76,12 @@ class _ExplorePageState extends State<ExplorePage> {
           backgroundColor: AppColorTheme.primaryDark,
           body: CustomScrollView(controller: _scrollController, slivers: [
             SliverAppBar(
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.logout),
+                  onPressed: () {},
+                ),
+              ],
               expandedHeight: 270.0,
               elevation: 0,
               pinned: true,
@@ -113,7 +119,15 @@ class _ExplorePageState extends State<ExplorePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 40,
+                ),
+                DestinationCarousel(),
+                SizedBox(
+                  height: 40,
+                ),
+                DestinationCarousel(),
+                SizedBox(
+                  height: 40,
                 ),
                 DestinationCarousel()
               ]),

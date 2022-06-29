@@ -1,5 +1,6 @@
 import 'package:atbeach/model/destination_model.dart';
 import 'package:atbeach/screens/destination_screen.dart';
+import 'package:atbeach/widget/app_color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -25,7 +26,7 @@ class DestinationCarousel extends StatelessWidget {
           ),
         ),
         Container(
-          height: 300.0,
+          height: 200.0,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
@@ -41,48 +42,10 @@ class DestinationCarousel extends StatelessWidget {
                 ),
                 child: Container(
                   margin: EdgeInsets.all(10.0),
-                  width: 210.0,
                   child: Stack(
                     alignment: Alignment.topCenter,
                     children: <Widget>[
-                      Positioned(
-                        bottom: 15.0,
-                        child: Container(
-                          height: 120.0,
-                          width: 200.0,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  destination.description,
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
                       Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              offset: Offset(0.0, 2.0),
-                              blurRadius: 6.0,
-                            ),
-                          ],
-                        ),
                         child: Stack(
                           children: <Widget>[
                             Hero(
@@ -106,25 +69,23 @@ class DestinationCarousel extends StatelessWidget {
                                   Text(
                                     destination.city,
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.w600,
+                                      color: AppColorTheme.line,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
                                       letterSpacing: 1.2,
                                     ),
                                   ),
                                   Row(
                                     children: <Widget>[
-                                      Icon(
-                                        FontAwesomeIcons.locationArrow,
-                                        size: 10.0,
-                                        color: Colors.white,
-                                      ),
                                       SizedBox(width: 5.0),
                                       Text(
                                         destination.price,
                                         style: TextStyle(
-                                          color: Colors.white,
-                                        ),
+                                            color: Colors.white,
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.0),
                                       ),
                                     ],
                                   ),

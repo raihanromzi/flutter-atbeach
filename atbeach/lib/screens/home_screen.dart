@@ -58,10 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          appBar: AppBar(
-            leading: null,
-            backgroundColor: AppColorTheme.primaryDark,
-          ),
+          appBar: null,
           backgroundColor: AppColorTheme.primaryDark,
           bottomNavigationBar: SalomonBottomBar(
             currentIndex: _currentIndex,
