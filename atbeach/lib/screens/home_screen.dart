@@ -56,39 +56,44 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: AppColorTheme.primaryDark,
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: _currentIndex,
-        onTap: onItemTapped,
-        items: [
-          /// Home
-          SalomonBottomBarItem(
-              icon: Icon(Icons.explore),
-              title: Text("Explore"),
-              selectedColor: Colors.white,
-              unselectedColor: AppColorTheme.line),
+          appBar: AppBar(
+            leading: null,
+            backgroundColor: AppColorTheme.primaryDark,
+          ),
+          backgroundColor: AppColorTheme.primaryDark,
+          bottomNavigationBar: SalomonBottomBar(
+            currentIndex: _currentIndex,
+            onTap: onItemTapped,
+            items: [
+              /// Home
+              SalomonBottomBarItem(
+                  icon: Icon(Icons.explore),
+                  title: Text("Explore"),
+                  selectedColor: Colors.white,
+                  unselectedColor: AppColorTheme.line),
 
-          /// Likes
-          SalomonBottomBarItem(
-              icon: Icon(Icons.photo_library),
-              title: Text("Gallery"),
-              selectedColor: Colors.white,
-              unselectedColor: AppColorTheme.line),
+              /// Likes
+              SalomonBottomBarItem(
+                  icon: Icon(Icons.photo_library),
+                  title: Text("Gallery"),
+                  selectedColor: Colors.white,
+                  unselectedColor: AppColorTheme.line),
 
-          /// Search
-          SalomonBottomBarItem(
-              icon: Icon(Icons.history),
-              title: Text("History"),
-              selectedColor: Colors.white,
-              unselectedColor: AppColorTheme.line),
-        ],
-      ),
-      body: PageView(
-        controller: pageController,
-        children: pages,
-        onPageChanged: onPageChanged,
-      ),
-    ));
+              /// Search
+              SalomonBottomBarItem(
+                  icon: Icon(Icons.history),
+                  title: Text("History"),
+                  selectedColor: Colors.white,
+                  unselectedColor: AppColorTheme.line),
+            ],
+          ),
+          body: PageView(
+            controller: pageController,
+            children: pages,
+            onPageChanged: onPageChanged,
+          ),
+        ));
   }
 }
