@@ -32,8 +32,7 @@ class DestinationCarousel extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               Destination destination = destinations[index];
               return GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
+                onTap: () => Navigator.of(context, rootNavigator: true).push(
                   MaterialPageRoute(
                     builder: (_) => DestinationScreen(
                       destination: destination,
