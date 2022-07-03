@@ -116,15 +116,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     ],
                   ),
                 ),
-                Positioned(
-                  right: 20.0,
-                  bottom: 20.0,
-                  child: Icon(
-                    Icons.location_on,
-                    color: Colors.white70,
-                    size: 25.0,
-                  ),
-                ),
               ],
             ),
             Expanded(
