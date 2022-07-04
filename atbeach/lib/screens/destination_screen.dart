@@ -98,11 +98,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       ),
                       Row(
                         children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.locationArrow,
-                            size: 15.0,
-                            color: Colors.white70,
-                          ),
                           SizedBox(width: 5.0),
                           Text(
                             widget.destination.price,
@@ -121,8 +116,11 @@ class _DestinationScreenState extends State<DestinationScreen> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                child: Text(widget.destination.description,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.white,
+                    )),
               ),
             ),
             Padding(

@@ -19,21 +19,17 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-    );
-    // return FutureBuilder(
-    //     future: Future.delayed(const Duration(seconds: 4)),
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return const SplashScreen();
-    //       } else {
-    //         return MaterialApp(
-    //           debugShowCheckedModeBanner: false,
-    //           home: OnBoardingView(),
-    //         );
-    //       }
-    //     });
+    return FutureBuilder(
+        future: Future.delayed(const Duration(seconds: 4)),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashScreen();
+          } else {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: OnBoardingView(),
+            );
+          }
+        });
   }
 }
